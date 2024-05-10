@@ -42,6 +42,21 @@ public class ProductoService {
 */
 
     public Producto guardar(Producto producto) {
+        // Validaciones de datos del producto
+        if (producto.getNombreproducto() == null || producto.getNombreproducto().isEmpty()) {
+            throw new IllegalArgumentException("El nombre del producto no puede estar vacío.");
+        }
+        if (producto.getPrecioproducto() == null || producto.getPrecioproducto() <= 0) {
+            throw new IllegalArgumentException("El precio del producto debe ser positivo.");
+        }
+        if (producto.getDetalleproducto() != null && producto.getDetalleproducto().isEmpty()) {
+            throw new IllegalArgumentException("El detalle del producto no puede estar vacío.");
+        }
+
+        // Calcular precio total con IVA
+        double precioProductoConIVA = producto.getPrecioproducto() * (1 + producto.getIvaproducto());
+        producto.setPreciototal(precioProductoConIVA);
+
         return repositorio.save(producto);
     }
 
