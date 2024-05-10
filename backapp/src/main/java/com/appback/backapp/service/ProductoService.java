@@ -19,6 +19,7 @@ public class ProductoService {
 
 
     //metodo para crear
+/*
     public Producto guardar(Producto producto) throws IOException {
         // Validaciones de datos del producto
         if (producto.getNombreproducto() == null || producto.getNombreproducto().isEmpty()) {
@@ -36,6 +37,11 @@ public class ProductoService {
         producto.setPreciototal(precioProductoConIVA);
 
         // Guardar el producto en la base de datos
+        return repositorio.save(producto);
+    }
+*/
+
+    public Producto guardar(Producto producto) {
         return repositorio.save(producto);
     }
 
