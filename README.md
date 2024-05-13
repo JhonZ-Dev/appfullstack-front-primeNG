@@ -18,4 +18,7 @@ http://localhost:8081/api/producto/guardar-con-imagen
   "fechacreacion": "2024-05-10T00:00:00"
 }
 
+##Antes
+
+![con bootstrap](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/ffe89dfe-6f35-4722-87a8-e7077a8b0d86)
 
