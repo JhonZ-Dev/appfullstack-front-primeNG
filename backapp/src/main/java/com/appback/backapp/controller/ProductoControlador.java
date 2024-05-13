@@ -1,6 +1,7 @@
 package com.appback.backapp.controller;
 
 import com.appback.backapp.model.Producto;
+import com.appback.backapp.model.ProductoConImagen;
 import com.appback.backapp.model.ProductoDTO;
 import com.appback.backapp.model.RespuestaPersonalizada;
 import com.appback.backapp.service.ProductoService;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -63,7 +65,7 @@ public class ProductoControlador {
         String host = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String url = ServletUriComponentsBuilder
                 .fromHttpUrl(host)
-                .path("/media/")
+                .path("/api/producto/")
                 .path(path)
                 .toUriString();
 
@@ -158,4 +160,24 @@ public class ProductoControlador {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType)
                 .body(file);
     }
+    @GetMapping("listar-con-imagen")
+    public List<ProductoConImagen> listarProductosConImagen() {
+        List<Producto> productos = productoService.productoList();
+        List<ProductoConImagen> productosConImagen = new ArrayList<>();
+
+        for (Producto producto : productos) {
+            ProductoConImagen productoConImagen = new ProductoConImagen(producto);
+            productosConImagen.add(productoConImagen);
+        }
+
+        return productosConImagen;
+    }
+
+
+    private String obtenerUrlImagen(String nombreImagen) {
+        // Aquí debes construir la URL completa para acceder a la imagen basándote en el nombre de la imagen
+        // Por ejemplo, si las imágenes están almacenadas en una carpeta llamada "images" dentro de tu servidor, podrías hacer algo como esto:
+        return "/images/" + nombreImagen;
+    }
+
 }

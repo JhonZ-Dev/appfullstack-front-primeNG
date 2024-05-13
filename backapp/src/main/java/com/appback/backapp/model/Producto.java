@@ -25,7 +25,7 @@ public class Producto {
     private Date fechaactualizacion;
     private Date fechacreacion;
     private String urlImagen;
-    private File file;// Nuevo campo para almacenar la URL de la imagen
+    private File file;
 
 
 
