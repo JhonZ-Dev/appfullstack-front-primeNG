@@ -8,25 +8,26 @@
 </head>
 
 <body>
-  <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()"
-    styleClass="p-button-text"></p-button>
-  <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
-  <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()"
-    styleClass="p-button-text"></p-button>
+  
   <div class="table-container">
-    <p-table [value]="productos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+  
+    <p-table #dt [value]="productos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
       [tableStyle]="{ 'min-width': '50rem' }"
       currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" (onPage)="pageChange($event)"
-      [rowsPerPageOptions]="[10, 25, 50]" class="small-table">
+      [rowsPerPageOptions]="[10, 25, 50]" class="small-table"
+      [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
       <ng-template pTemplate="header">
+        <div class="flex">
+          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+      </div>
         <tr>
-          <th>#</th>
-          <th>Nombre Producto</th>
-          <th>Precio Producto</th>
-          <th>Detalle Producto</th>
-          <th>Total</th>
-          <th>Imagen</th>
-          <th>Acciones</th>
+          <th style="min-width:100px">#</th>
+          <th style="min-width:200px">Nombre Producto</th>
+          <th style="min-width:200px">Precio Producto</th>
+          <th style="min-width:200px">Detalle Producto</th>
+          <th style="min-width:200px">Total</th>
+          <th style="min-width:200px">Imagen</th>
+          <th style="min-width:200px">Acciones</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-producto>
@@ -39,18 +40,23 @@
           <td> <img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
           </td>
           <td>
-            <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
-            <button class="btn " (click)="eliminarProducto(producto.id_producto)">Eliminar</button>
+            <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
+            type="button" 
+            class="botono"
+            (click)="editarProducto(producto.id_producto)" > 
+           </button> 
+<!--             <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
+ -->         <button pButton style="background-color: red; border-color: red; margin-left: 5px;" icon="pi pi-times" class="botono " type="button" severity="danger"
+                  (click)="eliminarProducto(producto.id_producto)">
+              </button>
           </td>
+
         </tr>
+        
       </ng-template>
-      <ng-template pTemplate="paginatorleft">
-        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-      </ng-template>
-      <ng-template pTemplate="paginatorright">
-        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-      </ng-template>
+  
     </p-table>
+
   </div>
 </body>
 

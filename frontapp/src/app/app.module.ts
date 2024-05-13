@@ -14,6 +14,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,10 @@ import { TableModule } from 'primeng/table';
     ScrollPanelModule,
     CalendarModule,
     BrowserAnimationsModule,
-    TableModule 
+    TableModule,
+    SplitButtonModule 
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
