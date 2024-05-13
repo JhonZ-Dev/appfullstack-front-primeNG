@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-listar',
   templateUrl: './listar.component.html',
@@ -11,7 +10,8 @@ import { Router } from '@angular/router';
 export class ListarComponent {
   productos:Productos[];
   data:any = [];
-
+  first = 0;
+  rows = 10;
   constructor(private serviceAPI:ServicesService, private enrutador:Router){}
   ngOnInit(){
     this.listarProductos();
@@ -40,6 +40,31 @@ eliminarProducto(id_producto:number){
   editarProducto(id_producto:number){
     this.enrutador.navigate(['productos-editar', id_producto])
   }
+  next() {
+    this.first = this.first + this.rows;
+}
+
+prev() {
+    this.first = this.first - this.rows;
+}
+
+reset() {
+    this.first = 0;
+}
+
+pageChange(event: { first: number; rows: number; }) {
+  this.first = event.first;
+  this.rows = event.rows;
+}
+
+isLastPage(): boolean {
+    return this.productos ? this.first === this.productos.length - this.rows : true;
+}
+
+isFirstPage(): boolean {
+    return this.productos ? this.first === 0 : true;
+}
+
 
   
 }

@@ -9,6 +9,11 @@ import { GuardarProductoComponent } from './producto/guardar/guardar-producto/gu
 import { FormsModule } from '@angular/forms';
 import { EditarProductoComponent } from './producto/editar/editar-producto/editar-producto.component';
 import { IndexIndexComponent } from './index/index-index/index-index.component';
+import { ButtonModule } from 'primeng/button';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { IndexIndexComponent } from './index/index-index/index-index.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ButtonModule,
+    ScrollPanelModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    TableModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

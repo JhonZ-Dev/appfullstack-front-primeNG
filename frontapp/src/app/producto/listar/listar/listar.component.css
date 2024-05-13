@@ -1,0 +1,8 @@
+.table-container {
+    margin-top: 50px; /* Espacio en la parte superior para separar del contenido anterior */
+  }
+
+  .small-table {
+    width: 80%; /* Ancho de la tabla */
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+  }

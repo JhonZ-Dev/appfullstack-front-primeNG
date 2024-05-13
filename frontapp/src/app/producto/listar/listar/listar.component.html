@@ -1,37 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container mt-4">
-    <div>
-        <h2>Listado de productos</h2>
-    </div>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-          <tr>
-            <th>#</th>
-            <th>Nombre Producto</th>
-            <th>Precio Producto</th>
-            <th>Detalle Producto</th>
-            <th>Total</th>
-            <th>Acciones</th>
-            <th>Imagen</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let producto of productos;  let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ producto.nombreproducto }}</td>
-            <td>{{ producto.precioproducto }}</td>
-            <td>{{ producto.detalleproducto}}</td>
-            <td>{{ producto.preciototal | number: '1.2-2' }}</td>
-    
-            <td>
-             <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
-            <button class="btn " (click)="eliminarProducto(producto.id_producto)">Eliminar</button> 
-            </td>
-            <td>                <img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
-            </td>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-          </tr>
-        </tbody>
-      </table>
-      <a class="btn btn-primary" href="/productos-agregar">Ir a agregar</a>
-</div>
+<body>
+  <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()"
+    styleClass="p-button-text"></p-button>
+  <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+  <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()"
+    styleClass="p-button-text"></p-button>
+  <div class="table-container">
+    <p-table [value]="productos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" (onPage)="pageChange($event)"
+      [rowsPerPageOptions]="[10, 25, 50]" class="small-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>#</th>
+          <th>Nombre Producto</th>
+          <th>Precio Producto</th>
+          <th>Detalle Producto</th>
+          <th>Total</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-producto>
+        <tr>
+          <td> {{ producto.id_producto }}</td>
+          <td>{{ producto.nombreproducto }}</td>
+          <td>{{ producto.precioproducto }}</td>
+          <td>{{ producto.detalleproducto}}</td>
+          <td>{{ producto.preciototal | number: '1.2-2' }}</td>
+          <td> <img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
+          </td>
+          <td>
+            <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
+            <button class="btn " (click)="eliminarProducto(producto.id_producto)">Eliminar</button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+    </p-table>
+  </div>
+</body>
+
+</html>

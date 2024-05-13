@@ -7,6 +7,7 @@ export class Productos {
     preciototal:number;
     file:File;
     urlImagen:string;
+    fechacreacion:Date
 
 
 }
