@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2>Agrega un producto</h2>
+    </div>
+
+    <div class="container">
+        <form (ngSubmit)="onSubmit(productForm, fileInput)" #productForm="ngForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombreproducto" class="form-label">Nombre producto</label>
+                <input type="text" class="form-control" name="nombreproducto" id="nombreproducto" [(ngModel)]="producto.nombreproducto" required>
+            </div>
+            <div class="mb-3">
+                <label for="precioproducto" class="form-label">Precio producto</label>
+                <input type="number" class="form-control" name="precioproducto" id="precioproducto" [(ngModel)]="producto.precioproducto" required>
+            </div>
+            <div class="mb-3">
+                <label for="detalleproducto" class="form-label">Detalle producto</label>
+                <input type="text" class="form-control" name="detalleproducto" id="detalleproducto" [(ngModel)]="producto.detalleproducto" required>
+            </div>
+            <div class="mb-3">
+                <label for="ivaproducto" class="form-label">IVA producto</label>
+                <select class="form-select" name="ivaproducto" id="ivaproducto" [(ngModel)]="producto.ivaproducto" required>
+                    <option value="0.15">15%</option>
+                    <option value="0.05">5%</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="file" class="form-label">imagen2</label>
+                <input type="file"#fileInput class="form-control" name="file" id="file" [(ngModel)]="producto.file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button> <br><br>
+            <a href="/" class="btn btn-primary">Cancelar</a>
+        </form>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+</html>
