@@ -153,6 +153,7 @@ public class ProductoControlador {
         return productoService.guardar(producto);
     }
 
+    /*Metodo so}}para solo obtener la imagen por postman*/
     @GetMapping("{filename:.+}")
     public ResponseEntity<Resource> obtenerImagen(@PathVariable String filename) throws IOException{
         Resource file = storageService.load(filename);
@@ -160,24 +161,8 @@ public class ProductoControlador {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType)
                 .body(file);
     }
-    @GetMapping("listar-con-imagen")
-    public List<ProductoConImagen> listarProductosConImagen() {
-        List<Producto> productos = productoService.productoList();
-        List<ProductoConImagen> productosConImagen = new ArrayList<>();
-
-        for (Producto producto : productos) {
-            ProductoConImagen productoConImagen = new ProductoConImagen(producto);
-            productosConImagen.add(productoConImagen);
-        }
-
-        return productosConImagen;
-    }
 
 
-    private String obtenerUrlImagen(String nombreImagen) {
-        // Aquí debes construir la URL completa para acceder a la imagen basándote en el nombre de la imagen
-        // Por ejemplo, si las imágenes están almacenadas en una carpeta llamada "images" dentro de tu servidor, podrías hacer algo como esto:
-        return "/images/" + nombreImagen;
-    }
+
 
 }
