@@ -77,27 +77,6 @@ public class ProductoControlador {
     }
 
 
-
-   /* @PostMapping(value = "/guardarconimaggen", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Producto insertarConImagen(@ModelAttribute Producto producto, @RequestParam("imagen") MultipartFile imagen) throws IOException {
-        if (!imagen.isEmpty()) {
-            try {
-                byte[] bytesImg = imagen.getBytes();
-                Path rutaCompleta = Paths.get(directorioImagen, imagen.getOriginalFilename());
-                Files.write(rutaCompleta, bytesImg);
-                producto.setImagen(imagen.getOriginalFilename());
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new RuntimeException("No se pudo guardar la imagen", e);
-            }
-        }
-        // Guardar el producto en la base de datos
-        return productoService.guardar(producto);
-    }*/
-
-
-
-
     @PutMapping("/editar/{id_producto}")
     public Producto edit(@RequestBody Producto producto, @PathVariable Long id_producto){
         return productoService.editar(producto,id_producto);
