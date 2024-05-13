@@ -22,3 +22,6 @@ http://localhost:8081/api/producto/guardar-con-imagen
 
 ![con bootstrap](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/ffe89dfe-6f35-4722-87a8-e7077a8b0d86)
 
+# PrimeNG
+
+![primeng](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/7858b593-c012-4960-bfa5-c89a212dd210)
