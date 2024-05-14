@@ -12,31 +12,45 @@
     <div class="container mt-4">
         <h2>Agrega un producto</h2>
     </div>
-
-    <div class="container">
+       <div class="flex center">
         <form (ngSubmit)="onSubmit(productForm, fileInput)" #productForm="ngForm" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="nombreproducto" class="form-label">Nombre producto</label>
-                <input type="text" class="form-control" name="nombreproducto" id="nombreproducto" [(ngModel)]="producto.nombreproducto" required>
-            </div>
-            <span class="p-float-label">
-                <input pInputText id="nombreproducto" [(ngModel)]="producto.nombreproducto" required />
-                <label htmlFor="nombreproducto">Nombre Prodcuto</label>
-            </span>
-            <div class="mb-3">
-                <label for="precioproducto" class="form-label">Precio producto</label>
-                <input type="number" class="form-control" name="precioproducto" id="precioproducto" [(ngModel)]="producto.precioproducto" required>
-            </div>
-            <div class="mb-3">
+            
+            <div class="formgrid grid">
+                <div class="field col">
+                    <span class="p-float-label">
+                        <input pInputText id="nombreproducto" [(ngModel)]="producto.nombreproducto" required  />
+                        <label htmlFor="nombreproducto">Nombre Producto</label>
+                    </span> 
+                </div>
+                <div class="field col">
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="producto.precioproducto" [showButtons]="true" inputId="precioproducto" mode="currency" currency="USD"> </p-inputNumber>
+                        <label htmlFor="precioproducto">Precio Producto</label>
+                    </span> 
+                </div>
+            </div> 
+            
+         <!--    <div class="mb-3">
                 <label for="detalleproducto" class="form-label">Detalle producto</label>
                 <input type="text" class="form-control" name="detalleproducto" id="detalleproducto" [(ngModel)]="producto.detalleproducto" required>
+            </div> -->
+            <div class="field col-12">
+                <span class="p-float-label">
+                    <textarea id="detalleproducto" [(ngModel)]="producto.detalleproducto" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+                    <label htmlFor="detalleproducto">Detalle Producto</label>
+
+                </span>
+                
             </div>
-            <div class="mb-3">
-                <label for="ivaproducto" class="form-label">IVA producto</label>
+            <div class="field col">
+               
                 <select class="form-select" name="ivaproducto" id="ivaproducto" [(ngModel)]="producto.ivaproducto" required>
                     <option value="0.15">15%</option>
                     <option value="0.05">5%</option>
                 </select>
+                 <span class="p-float-label">
+                <label htmlFor="ivaproducto" class="form-label">IVA producto</label>
+            </span> 
             </div>
 
             <div class="mb-3">
@@ -46,7 +60,8 @@
             <button type="submit" class="btn btn-primary">Guardar</button> <br><br>
             <a href="/" class="btn btn-primary">Cancelar</a>
         </form>
-    </div>
+       </div>
+ 
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

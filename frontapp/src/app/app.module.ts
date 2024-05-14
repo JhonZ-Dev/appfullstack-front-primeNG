@@ -15,7 +15,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { SplitButtonModule } from 'primeng/splitbutton';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,10 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     CalendarModule,
     BrowserAnimationsModule,
     TableModule,
-    SplitButtonModule 
+    SplitButtonModule,
+    InputTextModule,
+    InputNumberModule,
+    DropdownModule 
   ],
   providers: [ ],
   bootstrap: [AppComponent]

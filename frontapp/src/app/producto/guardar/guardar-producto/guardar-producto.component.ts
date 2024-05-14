@@ -3,6 +3,7 @@ import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-guardar-producto',
@@ -12,9 +13,18 @@ import { NgForm } from '@angular/forms';
 export class GuardarProductoComponent {
   producto:Productos = new Productos();
   imagenPreview: string | ArrayBuffer;
+  opciones: SelectItem[];
 
   constructor(private serviceAPI:ServicesService, private enrutador:Router){}
 
+
+  ngOnInit(){
+    this.opciones = [
+      { label: 'Opción 1', value: 'opcion1' },
+      { label: 'Opción 2', value: 'opcion2' },
+      { label: 'Opción 3', value: 'opcion3' }
+    ];
+  }
   irListaUsuarios() {
     this.enrutador.navigate(["/productos-lista"])
   }
