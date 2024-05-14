@@ -19,6 +19,10 @@
                 <label for="nombreproducto" class="form-label">Nombre producto</label>
                 <input type="text" class="form-control" name="nombreproducto" id="nombreproducto" [(ngModel)]="producto.nombreproducto" required>
             </div>
+            <span class="p-float-label">
+                <input pInputText id="nombreproducto" [(ngModel)]="producto.nombreproducto" required />
+                <label htmlFor="nombreproducto">Nombre Prodcuto</label>
+            </span>
             <div class="mb-3">
                 <label for="precioproducto" class="form-label">Precio producto</label>
                 <input type="number" class="form-control" name="precioproducto" id="precioproducto" [(ngModel)]="producto.precioproducto" required>

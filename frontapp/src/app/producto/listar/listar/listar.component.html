@@ -10,16 +10,16 @@
 <body>
   
   <div class="table-container">
-  
+    <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+    <a href="productos-agregar" style="text-decoration: none; margin-left: 5px;" type="button" pButton><i class="pi pi-plus" style="color: white; text-decoration: none;"></i>
+   </a>
     <p-table #dt [value]="productos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
       [tableStyle]="{ 'min-width': '50rem' }"
       currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" (onPage)="pageChange($event)"
       [rowsPerPageOptions]="[10, 25, 50]" class="small-table"
       [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
       <ng-template pTemplate="header">
-        <div class="flex">
-          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
-      </div>
+
         <tr>
           <th style="min-width:100px">#</th>
           <th style="min-width:200px">Nombre Producto</th>
