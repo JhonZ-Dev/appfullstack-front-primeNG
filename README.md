@@ -25,3 +25,9 @@ http://localhost:8081/api/producto/guardar-con-imagen
 # PrimeNG
 
 ![primeng](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/7858b593-c012-4960-bfa5-c89a212dd210)
+
+# Formulario Antes
+![formboot](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/6cbbf5e8-c3b3-4093-80be-bfa589553780)
+
+# Formulario PrimeNG
+![fronmejora](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/650150e4-13f6-440a-852b-a999033129de)
