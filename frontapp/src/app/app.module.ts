@@ -18,6 +18,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
+import { ImageModule } from 'primeng/image';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { DropdownModule } from 'primeng/dropdown';
     SplitButtonModule,
     InputTextModule,
     InputNumberModule,
-    DropdownModule 
+    DropdownModule,
+    ImageModule 
   ],
   providers: [ ],
   bootstrap: [AppComponent]

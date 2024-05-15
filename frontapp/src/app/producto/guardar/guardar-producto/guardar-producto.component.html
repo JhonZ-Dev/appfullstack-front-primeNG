@@ -54,11 +54,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="file" class="form-label">imagen2</label>
+                <label for="file" class="form-label">imagen</label>
                 <input type="file" #fileInput class="form-control" name="file" id="file" (change)="onFileChange($event)" required>
             </div>
-            <div *ngIf="imagenPreview">
+          <!--   <div *ngIf="imagenPreview">
                 <img [src]="imagenPreview" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px;">
+            </div> -->
+            <div *ngIf="imagenPreview" class="mb-3" >
+                <p-image [src]="imagenPreview" [previewImageSrc]="imagenPreview" alt="Image" width="50%" [preview]="true"></p-image>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button> <br><br>
             <a href="/" class="btn btn-primary">Cancelar</a>
