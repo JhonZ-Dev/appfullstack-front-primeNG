@@ -3,7 +3,6 @@ import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-guardar-producto',
@@ -12,19 +11,12 @@ import { SelectItem } from 'primeng/api';
 })
 export class GuardarProductoComponent {
   producto:Productos = new Productos();
-  imagenPreview: string | ArrayBuffer;
-  opciones: SelectItem[];
+  imagenPreview: string | ArrayBuffer | null = null; // Inicializa la propiedad imagenPreview como nula
 
   constructor(private serviceAPI:ServicesService, private enrutador:Router){}
 
 
-  ngOnInit(){
-    this.opciones = [
-      { label: 'Opción 1', value: 'opcion1' },
-      { label: 'Opción 2', value: 'opcion2' },
-      { label: 'Opción 3', value: 'opcion3' }
-    ];
-  }
+ 
   irListaUsuarios() {
     this.enrutador.navigate(["/productos-lista"])
   }
@@ -33,6 +25,7 @@ export class GuardarProductoComponent {
     const productoFormData = new FormData();
     productoFormData.append('file', fileInput.files[0]);
     productoFormData.append('producto', JSON.stringify(productForm.value));
+    console.log('Datos del formulario y archivo adjunto:', productoFormData);
     this.serviceAPI.agregarProductoConImagen2(productoFormData).subscribe(
       (response) => {
         console.log('Producto guardado correctamente:', response);
@@ -45,6 +38,24 @@ export class GuardarProductoComponent {
     );
   }
   
+
+// Función para manejar el cambio en el input de tipo archivo
+onFileChange(event: any) {
+  const reader = new FileReader();
+
+  if (event.target.files && event.target.files.length) {
+    const file = event.target.files[0];
+
+    reader.onload = () => {
+      this.imagenPreview = reader.result; // Asigna la URL de datos a la propiedad imagenPreview
+    };
+
+    reader.readAsDataURL(file); // Lee el archivo como una URL de datos
+  } else {
+    this.imagenPreview = null; // Si no se selecciona ningún archivo, establece la vista previa como nula
+  }
+}
+
 
 
 }

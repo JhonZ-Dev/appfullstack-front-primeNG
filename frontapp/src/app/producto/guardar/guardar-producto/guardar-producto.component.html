@@ -18,13 +18,13 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <span class="p-float-label">
-                        <input pInputText id="nombreproducto" [(ngModel)]="producto.nombreproducto" required  />
+                        <input pInputText id="nombreproducto" name="nombreproducto" [(ngModel)]="producto.nombreproducto" required  />
                         <label htmlFor="nombreproducto">Nombre Producto</label>
                     </span> 
                 </div>
                 <div class="field col">
                     <span class="p-float-label">
-                        <p-inputNumber [(ngModel)]="producto.precioproducto" [showButtons]="true" inputId="precioproducto" mode="currency" currency="USD"> </p-inputNumber>
+                        <p-inputNumber [(ngModel)]="producto.precioproducto" [showButtons]="true" inputId="precioproducto" name="precioproducto" mode="currency" currency="USD"> </p-inputNumber>
                         <label htmlFor="precioproducto">Precio Producto</label>
                     </span> 
                 </div>
@@ -36,7 +36,7 @@
             </div> -->
             <div class="field col-12">
                 <span class="p-float-label">
-                    <textarea id="detalleproducto" [(ngModel)]="producto.detalleproducto" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+                    <textarea id="detalleproducto" [(ngModel)]="producto.detalleproducto" name="detalleproducto" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
                     <label htmlFor="detalleproducto">Detalle Producto</label>
 
                 </span>
@@ -55,7 +55,10 @@
 
             <div class="mb-3">
                 <label for="file" class="form-label">imagen2</label>
-                <input type="file"#fileInput class="form-control" name="file" id="file" [(ngModel)]="producto.file" required>
+                <input type="file" #fileInput class="form-control" name="file" id="file" (change)="onFileChange($event)" required>
+            </div>
+            <div *ngIf="imagenPreview">
+                <img [src]="imagenPreview" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px;">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button> <br><br>
             <a href="/" class="btn btn-primary">Cancelar</a>
