@@ -2,6 +2,7 @@ package com.appback.backapp.model;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -11,8 +12,8 @@ public class ProductoConImagen {
     private String detalleproducto;
     private Double ivaproducto;
     private Double preciototal;
-    private Date fechaactualizacion;
-    private Date fechacreacion;
+    private LocalDate fechaactualizacion;
+    private LocalDate fechacreacion;
     private String urlImagen;
 
     public ProductoConImagen(Producto producto) {

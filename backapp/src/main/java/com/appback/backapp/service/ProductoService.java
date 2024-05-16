@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +53,7 @@ public class ProductoService {
         if (producto.getDetalleproducto() != null && producto.getDetalleproducto().isEmpty()) {
             throw new IllegalArgumentException("El detalle del producto no puede estar vacío.");
         }
+        producto.setFechacreacion(LocalDate.now());
 
         // Calcular precio total con IVA
         double precioProductoConIVA = producto.getPrecioproducto() * (1 + producto.getIvaproducto());
@@ -79,6 +81,7 @@ public class ProductoService {
                 producto1.setNombreproducto(producto.getNombreproducto());
                 producto1.setDetalleproducto(producto.getDetalleproducto());
                 producto1.setPrecioproducto(producto.getPrecioproducto());
+                producto1.setFechaactualizacion(LocalDate.now());
                 if (!Objects.equals(producto1.getIvaproducto(), producto.getIvaproducto())) {
                     producto1.setIvaproducto(producto.getIvaproducto());
                     double precioProductoConIVA = producto.getPrecioproducto() * (1 + producto.getIvaproducto());

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -22,8 +23,8 @@ public class Producto {
     private String detalleproducto;
     private Double ivaproducto;
     private Double preciototal;
-    private Date fechaactualizacion;
-    private Date fechacreacion;
+    private LocalDate fechaactualizacion;
+    private LocalDate fechacreacion;
     private String urlImagen;
     private File file;
 
