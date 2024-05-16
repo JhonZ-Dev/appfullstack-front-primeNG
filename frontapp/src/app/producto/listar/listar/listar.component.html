@@ -18,7 +18,7 @@
       currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" (onPage)="pageChange($event)"
       [rowsPerPageOptions]="[10, 25, 50]" class="small-table"
       [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
-      <ng-template pTemplate="header">
+      <ng-template pTemplate="header" >
 
         <tr>
           <th style="min-width:100px">#</th>
@@ -30,9 +30,9 @@
           <th style="min-width:200px">Acciones</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-producto>
+      <ng-template pTemplate="body" let-producto let-rowIndex="rowIndex">
         <tr>
-          <td> {{ producto.id_producto }}</td>
+          <td> {{ rowIndex+1 }}</td>
           <td>{{ producto.nombreproducto }}</td>
           <td>{{ producto.precioproducto }}</td>
           <td>{{ producto.detalleproducto}}</td>
