@@ -27,6 +27,8 @@ public class Producto {
     private LocalDate fechacreacion;
     private String urlImagen;
     private File file;
+    private String sistema;
+    private String ubicacion;
 
 
 

@@ -15,6 +15,8 @@ public class ProductoConImagen {
     private LocalDate fechaactualizacion;
     private LocalDate fechacreacion;
     private String urlImagen;
+    private String sistema;
+    private String ubicacion;
 
     public ProductoConImagen(Producto producto) {
         this.nombreproducto = producto.getNombreproducto();
@@ -25,5 +27,7 @@ public class ProductoConImagen {
         this.fechaactualizacion = producto.getFechaactualizacion();
         this.fechacreacion = producto.getFechacreacion();
         this.urlImagen = producto.getUrlImagen();
+        this.sistema = producto.getSistema();
+        this.ubicacion = producto.getUbicacion();
     }
 }
