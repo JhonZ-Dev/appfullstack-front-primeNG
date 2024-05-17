@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontapp';
+
+  isLoading = true;
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 5000); // 5000 milisegundos = 5 segundos
+  }
 }
