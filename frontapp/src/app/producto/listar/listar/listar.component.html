@@ -10,14 +10,19 @@
 <body>
   
   <div class="table-container">
-    <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+    <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom" style="border-radius: 5px;"></button>
     <a href="productos-agregar" style="text-decoration: none; margin-left: 5px;" type="button" pButton><i class="pi pi-plus" style="color: white; text-decoration: none;"></i>
-   </a>
+   </a> <br>
+<div class="mb-3" style="margin-top: 21px;">
+  <input pInputText type="text" (input)="applyFilter($event)" placeholder="Buscar...">
+
+</div>
     <p-table #dt [value]="productos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
       [tableStyle]="{ 'min-width': '50rem' }"
       currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" (onPage)="pageChange($event)"
       [rowsPerPageOptions]="[10, 25, 50]" class="small-table"
-      [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
+      [globalFilterFields]="['nombreproducto', 'detalleproducto', 'precioproducto', 'preciototal']">
+      >
       <ng-template pTemplate="header" >
 
         <tr>

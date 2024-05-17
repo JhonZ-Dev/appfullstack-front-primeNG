@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
@@ -23,6 +23,8 @@ interface ExportColumn {
   styleUrls: ['./listar.component.css']
 })
 export class ListarComponent {
+  @ViewChild('dt') dt: any;
+
   productos:Productos[];
   data:any = [];
   first = 0;
@@ -96,6 +98,13 @@ exportPdf() {
           doc.save('products.pdf');
       });
   });
+}
+
+
+applyFilter(event: Event) {
+  const inputElement = event.target as HTMLInputElement;
+  const filterValue = inputElement.value;
+  this.dt.filterGlobal(filterValue, 'contains');
 }
 
 }
