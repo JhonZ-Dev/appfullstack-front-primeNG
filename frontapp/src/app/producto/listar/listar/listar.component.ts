@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem} from 'primeng/api';
 import * as FileSaver from 'file-saver';
 
@@ -30,8 +30,11 @@ export class ListarComponent {
   first = 0;
   rows = 10;
   items: MenuItem[];
+  displayEditModal: boolean = false;
+  selectedProducto: any = {}; // Inicializado como un objeto vacío
+  producto:Productos = new Productos();
 
-  constructor(private serviceAPI:ServicesService, private enrutador:Router)
+  constructor(private serviceAPI:ServicesService, private enrutador:Router,private enruta:ActivatedRoute)
   {
     
   }
@@ -39,6 +42,16 @@ export class ListarComponent {
   ngOnInit(){
     this.listarProductos();
     
+  }
+  
+
+  openEditModal(productId: number) {
+    // Llama al método para obtener el producto por su ID
+    this.serviceAPI.obtenerPorId(productId).subscribe((producto: any) => {
+      console.log('Datos del producto:', producto); // Agregamos un console.log aquí
+      this.selectedProducto = { ...producto };
+      this.displayEditModal = true; // Abre el modal después de obtener los datos del producto
+    });
   }
 
   //metodo para listar
@@ -51,7 +64,20 @@ export class ListarComponent {
       }
     )
   }
-
+  updateProducto() {
+    // Aquí iría la lógica para actualizar el producto
+    this.displayEditModal = false;
+    this.serviceAPI.editarProductos(this.selectedProducto.id_producto, this.selectedProducto).subscribe(
+      (actualizada)=>{
+        console.log("Actualizada", actualizada);
+        //this.irListaUsuarios();
+      }, (error)=>{
+        console.log("Error", error);
+      }
+    )
+  }
+  
+  
   //eliminar
 eliminarProducto(id_producto:number){
   this.serviceAPI.eliminarproducto(id_producto).subscribe(()=>{

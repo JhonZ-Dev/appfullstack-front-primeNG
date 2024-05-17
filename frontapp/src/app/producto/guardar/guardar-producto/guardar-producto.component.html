@@ -57,6 +57,10 @@
                 <label for="file" class="form-label">imagen</label>
                 <input type="file" #fileInput class="form-control" name="file" id="file" (change)="onFileChange($event)" required>
             </div>
+
+            <input type="hidden" pInputText id="sistema" name="sistema" [(ngModel)]="producto.sistema" required  />
+            <input type="hidden" pInputText id="ubicacion" name="ubicacion" [(ngModel)]="producto.ubicacion" required  />
+
           <!--   <div *ngIf="imagenPreview">
                 <img [src]="imagenPreview" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px;">
             </div> -->

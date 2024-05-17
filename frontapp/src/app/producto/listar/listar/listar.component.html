@@ -45,11 +45,15 @@
           <td> <img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
           </td>
           <td>
-            <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
+            <!-- <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
             type="button" 
             class="botono"
             (click)="editarProducto(producto.id_producto)" > 
-           </button> 
+           </button>  -->
+           <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
+        type="button" class="botono" (click)="openEditModal(producto.id_producto)">
+</button>
+
 <!--             <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
  -->         <button pButton style="background-color: red; border-color: red; margin-left: 5px;" icon="pi pi-times" class="botono " type="button" severity="danger"
                   (click)="eliminarProducto(producto.id_producto)">
@@ -63,6 +67,40 @@
     </p-table>
 
   </div>
+
+ <!-- Edit Modal -->
+ <p-dialog header="Editar Producto" [(visible)]="displayEditModal" [modal]="true" [responsive]="true"
+ [style]="{width: '50vw'}" [baseZIndex]="10000">
+ <form (ngSubmit)="updateProducto()">
+   <div class="p-fluid">
+     <div class="p-field">
+       <label for="nombreproducto">Nombre Producto</label>
+       <input id="nombreproducto" type="text" pInputText [(ngModel)]="selectedProducto.nombreproducto" name="nombreproducto" required>
+     </div>
+     <div class="p-field">
+       <label for="precioproducto">Precio Producto</label>
+       <input id="precioproducto" type="number" pInputText [(ngModel)]="selectedProducto.precioproducto" name="precioproducto" required>
+     </div>
+     <div class="p-field">
+       <label for="detalleproducto">Detalle Producto</label>
+       <input id="detalleproducto" type="text" pInputText [(ngModel)]="selectedProducto.detalleproducto" name="detalleproducto" required>
+     </div>
+     <div class="p-field">
+       <label for="preciototal">Total</label>
+       <input id="preciototal" type="number" pInputText [(ngModel)]="selectedProducto.preciototal" name="preciototal" required>
+     </div>
+     <div class="p-field">
+       <label for="urlImagen">URL de la Imagen</label>
+       <input id="urlImagen" type="text" pInputText [(ngModel)]="selectedProducto.urlImagen" name="urlImagen" required>
+     </div>
+   </div>
+   <p-footer>
+     <button type="submit" pButton label="Guardar" icon="pi pi-check" style="margin-right: .25em;"></button>
+     <button type="button" pButton label="Cancelar" icon="pi pi-times" (click)="displayEditModal=false"></button>
+   </p-footer>
+ </form>
+</p-dialog>
+
 </body>
 
 </html>

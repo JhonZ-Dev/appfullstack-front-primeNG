@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
@@ -9,23 +9,29 @@ import { NgForm } from '@angular/forms';
   templateUrl: './guardar-producto.component.html',
   styleUrls: ['./guardar-producto.component.css']
 })
-export class GuardarProductoComponent {
+export class GuardarProductoComponent implements OnInit {
   producto:Productos = new Productos();
   imagenPreview: string | ArrayBuffer | null = null; // Inicializa la propiedad imagenPreview como nula
 
   constructor(private serviceAPI:ServicesService, private enrutador:Router){}
 
 
- 
+ ngOnInit(){
+     this.obtenerUbicacion();
+ }
   irListaUsuarios() {
     this.enrutador.navigate(["/productos-lista"])
   }
 
-  onSubmit(productForm: NgForm, fileInput: any) {
+  async onSubmit(productForm: NgForm, fileInput: any) {
+    await this.obtenerUbicacion(); // Espera a que la información de ubicación se obtenga
     const productoFormData = new FormData();
     productoFormData.append('file', fileInput.files[0]);
     productoFormData.append('producto', JSON.stringify(productForm.value));
     console.log('Datos del formulario y archivo adjunto:', productoFormData);
+    console.log('Sistema:', this.producto.sistema); // Imprime el sistema en la consola
+    console.log('Ubicación:', this.producto.ubicacion); // Imprime la ubicación en la consola
+
     this.serviceAPI.agregarProductoConImagen2(productoFormData).subscribe(
       (response) => {
         console.log('Producto guardado correctamente:', response);
@@ -57,5 +63,32 @@ onFileChange(event: any) {
 }
 
 
+async obtenerUbicacion() {
+  const API_ENDPOINT_IP = "http://api.ipify.org/?format=json";
+  const API_ENDPOINT_UA = "https://api.apicagent.com/?ua=" + navigator.userAgent;
+
+  try {
+    // Obtener IP
+    const responseIp = await fetch(API_ENDPOINT_IP);
+    const datosIp = await responseIp.json();
+    const ip = datosIp.ip;
+
+    // Obtener Ubicación según IP
+    const API_ENDPOINT_LOCATION = "http://ip-api.com/json/" + ip;
+    const responseLocation = await fetch(API_ENDPOINT_LOCATION);
+    const datosUbicacion = await responseLocation.json();
+    this.producto.ubicacion = `${datosUbicacion.country} - ${datosUbicacion.city} - ${ip}`;
+    console.log('Ubicación obtenida:', this.producto.ubicacion);
+
+    // Obtener Sistema Operativo
+    const responseUa = await fetch(API_ENDPOINT_UA);
+    const datosNavegador = await responseUa.json();
+    this.producto.sistema = `${datosNavegador.os.name} ${datosNavegador.os.version}, ${datosNavegador.client.name}`;
+    console.log('Sistema obtenido:', this.producto.sistema);
+
+  } catch (error) {
+    console.error('Error al obtener la ubicación y sistema:', error);
+  }
+}
 
 }

@@ -8,6 +8,8 @@ export class Productos {
     file:File;
     urlImagen:string;
     fechacreacion:Date
+    sistema:string;
+    ubicacion:string;
 
 
 }
