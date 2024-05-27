@@ -38,7 +38,7 @@
       <ng-template pTemplate="body" let-producto let-rowIndex="rowIndex">
         <tr>
           <td> {{ rowIndex+1 }}</td>
-          <td>{{ producto.nombreproducto }}</td>
+          <td (dblclick)="openEditModal(producto.id_producto)">{{ producto.nombreproducto }}</td>
           <td>{{ producto.precioproducto }}</td>
           <td>{{ producto.detalleproducto}}</td>
           <td>{{ producto.preciototal | number: '1.2-2' }}</td>
@@ -50,9 +50,9 @@
             class="botono"
             (click)="editarProducto(producto.id_producto)" > 
            </button>  -->
-           <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
+          <!--  <button pButton style="background-color: yellow; border-color: yellow; color: black;" icon="pi pi-user"
         type="button" class="botono" (click)="openEditModal(producto.id_producto)">
-</button>
+</button> -->
 
 <!--             <button (click)="editarProducto(producto.id_producto)" class="btn btn-sm me-3">Editar</button>
  -->         <button pButton style="background-color: red; border-color: red; margin-left: 5px;" icon="pi pi-times" class="botono " type="button" severity="danger"
@@ -90,7 +90,8 @@
        <input id="preciototal" type="number" pInputText [(ngModel)]="selectedProducto.preciototal" name="preciototal" required>
      </div>
      <div class="p-field">
-       <label for="urlImagen">URL de la Imagen</label>
+       <label for="urlImagen">Imagen</label>
+       
        <input id="urlImagen" type="text" pInputText [(ngModel)]="selectedProducto.urlImagen" name="urlImagen" required>
      </div>
    </div>

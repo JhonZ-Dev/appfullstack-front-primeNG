@@ -9,6 +9,7 @@ import { Productos } from '../producto/productos';
 export class ServicesService {
 
   url="http://localhost:8081/api/producto"
+  url2="http://localhost:5000/api/producto"
 
   constructor(private http:HttpClient) { }
 
@@ -31,10 +32,20 @@ export class ServicesService {
   agregarProductoConImagen2(productoFormData: FormData) {
     return this.http.post<any>('http://localhost:8081/api/producto/guardar-con-imagen', productoFormData);
   }
+
+  agregarProductoConImagen3(productoFormData: FormData) {
+    return this.http.post<any>('http://localhost:5000/api/producto/guardar-con-imagen', productoFormData);
+  }
   //metodo para listar productos
   public listarProductos():Observable<Productos[]>{
     return this.http.get<Productos[]>(this.url+"/listar");
   }
+
+
+    //metodo para listar productos
+    public listarProductos2():Observable<Productos[]>{
+      return this.http.get<Productos[]>(this.url2+"/listar");
+    }
 
   //metodo para ediar los productos
   public editarProductos(id_producto:number, productos:Productos):Observable<Productos>{
