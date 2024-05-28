@@ -38,6 +38,11 @@ http://localhost:8081/api/producto/guardar-con-imagen
 
 ![apis](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/7c44a96e-b33e-4126-b4f2-171c17655924)
 
+# Gráficos con primeng
+
+![reporte](https://github.com/JhonZ-Dev/appfullstack-front-primeNG/assets/79710173/bd9182b6-6a87-4d69-9095-a73ac9fb70b8)
+
+
 
 
 
