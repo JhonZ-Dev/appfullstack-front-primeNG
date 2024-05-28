@@ -20,13 +20,17 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
+import { GraficsComponent } from './grafics/grafics.component';
+import { ChartModule } from 'primeng/chart';
+
 @NgModule({
   declarations: [
     AppComponent,
     ListarComponent,
     GuardarProductoComponent,
     EditarProductoComponent,
-    IndexIndexComponent
+    IndexIndexComponent,
+    GraficsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { DialogModule } from 'primeng/dialog';
     InputNumberModule,
     DropdownModule,
     ImageModule,
-    DialogModule 
+    DialogModule ,
+    ChartModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

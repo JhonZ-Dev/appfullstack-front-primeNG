@@ -32,7 +32,7 @@ export class GuardarProductoComponent implements OnInit {
     console.log('Sistema:', this.producto.sistema); // Imprime el sistema en la consola
     console.log('Ubicación:', this.producto.ubicacion); // Imprime la ubicación en la consola
 
-    this.serviceAPI.agregarProductoConImagen3(productoFormData).subscribe(
+    this.serviceAPI.agregarProductoConImagen(productoFormData).subscribe(
       (response) => {
         console.log('Producto guardado correctamente:', response);
         // Aquí puedes agregar lógica adicional después de guardar el producto
