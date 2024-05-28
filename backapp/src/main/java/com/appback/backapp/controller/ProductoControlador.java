@@ -4,6 +4,7 @@ import com.appback.backapp.model.Producto;
 import com.appback.backapp.model.ProductoConImagen;
 import com.appback.backapp.model.ProductoDTO;
 import com.appback.backapp.model.RespuestaPersonalizada;
+import com.appback.backapp.repositorio.ProductoRepositorio;
 import com.appback.backapp.service.ProductoService;
 import com.appback.backapp.service.StorageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,6 +38,8 @@ public class ProductoControlador {
     private final HttpServletRequest request;
     @Autowired
     private ProductoService productoService;
+    @Autowired
+    private ProductoRepositorio repositorio;
 
     //guardar
     @PostMapping("/guardar")
@@ -141,6 +144,12 @@ public class ProductoControlador {
                 .body(file);
     }
 
+
+    /*LLAMAR AL ALMACENAMIENTO ALMACENADO*/
+    @GetMapping("/product/dias/semana")
+    public List<Object[]> obtenerTotalProductosPorDia(){
+        return repositorio.obtenerTotalProductosPorDia();
+    }
 
 
 
