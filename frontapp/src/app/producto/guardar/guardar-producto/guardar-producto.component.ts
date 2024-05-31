@@ -3,17 +3,19 @@ import { Productos } from '../../productos';
 import { ServicesService } from 'src/app/apiservice/services.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-guardar-producto',
   templateUrl: './guardar-producto.component.html',
-  styleUrls: ['./guardar-producto.component.css']
+  styleUrls: ['./guardar-producto.component.css'],
+  providers: [MessageService]
 })
 export class GuardarProductoComponent implements OnInit {
   producto:Productos = new Productos();
   imagenPreview: string | ArrayBuffer | null = null; // Inicializa la propiedad imagenPreview como nula
 
-  constructor(private serviceAPI:ServicesService, private enrutador:Router){}
+  constructor(private serviceAPI:ServicesService, private enrutador:Router, private messageService: MessageService){}
 
 
  ngOnInit(){
@@ -35,7 +37,11 @@ export class GuardarProductoComponent implements OnInit {
     this.serviceAPI.agregarProductoConImagen(productoFormData).subscribe(
       (response) => {
         console.log('Producto guardado correctamente:', response);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Guardado Correctamente' });
         // Aquí puedes agregar lógica adicional después de guardar el producto
+        setTimeout(() => {
+          this.irLista();
+        }, 3000);
       },
       (error) => {
         console.error('Error al guardar el producto:', error);
@@ -90,5 +96,10 @@ async obtenerUbicacion() {
     console.error('Error al obtener la ubicación y sistema:', error);
   }
 }
+
+irLista(){
+  this.enrutador.navigate(["/productos-lista"])
+}
+
 
 }

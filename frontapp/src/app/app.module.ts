@@ -22,7 +22,7 @@ import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
 import { GraficsComponent } from './grafics/grafics.component';
 import { ChartModule } from 'primeng/chart';
-
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,8 @@ import { ChartModule } from 'primeng/chart';
     DropdownModule,
     ImageModule,
     DialogModule ,
-    ChartModule
+    ChartModule,
+    ToastModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

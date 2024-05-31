@@ -20,3 +20,23 @@ td{
 .botono .p-button {
   border-radius: 50%; /* Redondea los bordes para hacer que el botón sea circular */
 }
+
+.header-h{
+ border-radius: 3px;
+ background-color: rgba(19, 147, 252, 0.986);
+}
+.custom-header {
+  background-color: rgb(216, 3, 92);
+  color: white;
+  font-weight: bold;
+}
+
+.custom-header th {
+  min-width: 200px;
+}
+.custom-header th:first-child {
+  min-width: 100px;
+}
+
+
+
