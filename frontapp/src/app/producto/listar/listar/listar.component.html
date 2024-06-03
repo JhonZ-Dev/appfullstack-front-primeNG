@@ -73,29 +73,31 @@
 
  <!-- Edit Modal -->
  <p-dialog header="Editar Producto" [(visible)]="displayEditModal" [modal]="true" [responsive]="true"
- [style]="{width: '50vw'}" [baseZIndex]="10000">
+ [style]="{width: '50vw'}" [baseZIndex]="10000" (onHide)="resetFieldsDisabled()">
  <form (ngSubmit)="updateProducto()">
+  <p-button (click)="fieldsDisabled = false" label="Warning" [rounded]="true" severity="warning"><i class="pi pi-pencil" style="font-size: 1rem"></i>
+  </p-button>
    <div class="p-fluid">
      <div class="p-field">
        <label for="nombreproducto">Nombre Producto</label>
-       <input id="nombreproducto" type="text" pInputText [(ngModel)]="selectedProducto.nombreproducto" name="nombreproducto" required>
+       <input id="nombreproducto" type="text" pInputText [(ngModel)]="selectedProducto.nombreproducto" name="nombreproducto" required [disabled]="fieldsDisabled">
      </div>
      <div class="p-field">
        <label for="precioproducto">Precio Producto</label>
-       <input id="precioproducto" type="number" pInputText [(ngModel)]="selectedProducto.precioproducto" name="precioproducto" required>
+       <input id="precioproducto" type="number" pInputText [(ngModel)]="selectedProducto.precioproducto" name="precioproducto" required [disabled]="fieldsDisabled">
      </div>
      <div class="p-field">
        <label for="detalleproducto">Detalle Producto</label>
-       <input id="detalleproducto" type="text" pInputText [(ngModel)]="selectedProducto.detalleproducto" name="detalleproducto" required>
+       <input id="detalleproducto" type="text" pInputText [(ngModel)]="selectedProducto.detalleproducto" name="detalleproducto" required [disabled]="fieldsDisabled">
      </div>
      <div class="p-field">
        <label for="preciototal">Total</label>
-       <input id="preciototal" type="number" pInputText [(ngModel)]="selectedProducto.preciototal" name="preciototal" required>
+       <input id="preciototal" type="number" pInputText [(ngModel)]="selectedProducto.preciototal" name="preciototal" required [disabled]="fieldsDisabled">
      </div>
      <div class="p-field">
        <label for="urlImagen">Imagen</label>
        
-       <input id="urlImagen" type="text" pInputText [(ngModel)]="selectedProducto.urlImagen" name="urlImagen" required>
+       <input id="urlImagen" type="text" pInputText [(ngModel)]="selectedProducto.urlImagen" name="urlImagen" required [disabled]="fieldsDisabled">
      </div>
    </div>
    <p-footer>
