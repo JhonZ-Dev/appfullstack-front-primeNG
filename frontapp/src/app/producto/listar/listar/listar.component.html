@@ -41,7 +41,7 @@
       <ng-template pTemplate="body" let-producto let-rowIndex="rowIndex">
         <tr>
           <td> {{ rowIndex+1 }}</td>
-          <td (dblclick)="openEditModal(producto.id_producto)">{{ producto.nombreproducto }}</td>
+          <td style="cursor: pointer;" (dblclick)="openEditModal(producto.id_producto)">{{ producto.nombreproducto }}</td>
           <td>{{ producto.precioproducto }}</td>
           <td>{{ producto.detalleproducto}}</td>
           <td>{{ producto.preciototal | number: '1.2-2' }}</td>
