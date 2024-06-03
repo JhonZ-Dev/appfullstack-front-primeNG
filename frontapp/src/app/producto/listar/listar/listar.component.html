@@ -75,7 +75,7 @@
  <p-dialog header="Editar Producto" [(visible)]="displayEditModal" [modal]="true" [responsive]="true"
  [style]="{width: '50vw'}" [baseZIndex]="10000" (onHide)="resetFieldsDisabled()">
  <form (ngSubmit)="updateProducto()">
-  <p-button (click)="fieldsDisabled = false" label="Warning" [rounded]="true" severity="warning"><i class="pi pi-pencil" style="font-size: 1rem"></i>
+  <p-button (click)="fieldsDisabled = false" [rounded]="true" severity="warning"><i class="pi pi-pencil" style="font-size: 1rem"></i>
   </p-button>
    <div class="p-fluid">
      <div class="p-field">
@@ -101,7 +101,7 @@
      </div>
    </div>
    <p-footer>
-     <button type="submit" pButton label="Guardar" icon="pi pi-check" style="margin-right: .25em;"></button>
+     <button type="submit" pButton label="Guardar" icon="pi pi-check" style="margin-right: .25em;" [disabled]="fieldsDisabled"></button>
      <button type="button" pButton label="Cancelar" icon="pi pi-times" (click)="displayEditModal=false"></button>
    </p-footer>
  </form>
