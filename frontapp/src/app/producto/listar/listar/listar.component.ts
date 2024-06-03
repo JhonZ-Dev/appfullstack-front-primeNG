@@ -33,6 +33,7 @@ export class ListarComponent {
   displayEditModal: boolean = false;
   selectedProducto: any = {}; // Inicializado como un objeto vacío
   producto:Productos = new Productos();
+  fieldsDisabled: boolean = true; // Propiedad para controlar si los campos están deshabilitados
 
   constructor(private serviceAPI:ServicesService, private enrutador:Router,private enruta:ActivatedRoute)
   {
@@ -51,6 +52,7 @@ export class ListarComponent {
       console.log('Datos del producto:', producto); // Agregamos un console.log aquí
       this.selectedProducto = { ...producto };
       this.displayEditModal = true; // Abre el modal después de obtener los datos del producto
+      this.displayEditModal = true;
     });
   }
 
@@ -77,6 +79,9 @@ export class ListarComponent {
     )
   }
   
+  resetFieldsDisabled() {
+    this.fieldsDisabled = true; // Restablecer el estado de los campos al cerrar el modal
+  }
   
   //eliminar
 eliminarProducto(id_producto:number){
