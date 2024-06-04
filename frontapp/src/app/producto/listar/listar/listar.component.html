@@ -75,8 +75,8 @@
  <p-dialog header="Editar Producto" [(visible)]="displayEditModal" [modal]="true" [responsive]="true"
  [style]="{width: '50vw'}" [baseZIndex]="10000" (onHide)="resetFieldsDisabled()">
  <form (ngSubmit)="updateProducto()">
-  <button pButton class="botonos" (click)="fieldsDisabled = false"  severity="warning"><i class="pi pi-pencil" style="font-size: 1rem"></i>
-  </button>
+  <p-button [style]="{ 'border-radius': '100px', 'width':'10%', 'margin-left':'25px'}"  (click)="fieldsDisabled = false" [rounded]="true" severity="warning"><i class="pi pi-pencil" ></i>
+  </p-button>
    <div class="p-fluid">
      <div class="p-field">
        <label for="nombreproducto">Nombre Producto</label>
