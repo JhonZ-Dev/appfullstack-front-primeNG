@@ -7,6 +7,7 @@ import lombok.Data;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -30,5 +31,7 @@ public class Producto {
     private String sistema;
     private String ubicacion;
     private Double stockproducto;
-
+    // Relación con Ventas
+    @ManyToMany(mappedBy = "productos")
+    private Set<VentasModel> ventas;
 }

@@ -14,5 +14,4 @@ public class UsuariosModel {
     private String apellido;
     private String email;
     private String password;
-    
 }
