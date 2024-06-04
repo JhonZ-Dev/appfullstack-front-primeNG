@@ -29,4 +29,6 @@ public class Producto {
     private File file;
     private String sistema;
     private String ubicacion;
+    private Double stockproducto;
+
 }
