@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: java-app
+    ports:
+      - "8081:8081"
+    environment:
+      - DATABASE_URL=jdbc:mysql://db:3306/p_productos
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - db
+    volumes:
+      - ./src/main/resources/imagen:/app/src/main/resources/imagen
+      - ./mediafiles:/app/mediafiles
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: p_productos
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3307"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
