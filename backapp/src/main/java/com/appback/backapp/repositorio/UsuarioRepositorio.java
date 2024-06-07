@@ -1,4 +1,7 @@
 package com.appback.backapp.repositorio;
 
-public interface UsuarioRepositorio {
+import com.appback.backapp.model.UsuariosModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepositorio extends JpaRepository<UsuariosModel, Long> {
 }
